@@ -1,0 +1,27 @@
+#!/bin/python3
+import collections
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the makeAnagram function below.
+def makeAnagram(a, b):
+    c = collections.Counter(a)
+    d = collections.Counter(b)
+    c.subtract(d)
+    return sum(abs(i) for i in c.values())
+    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    a = input()
+
+    b = input()
+
+    res = makeAnagram(a, b)
+
+    fptr.write(str(res) + '\n')
+
+    fptr.close()
