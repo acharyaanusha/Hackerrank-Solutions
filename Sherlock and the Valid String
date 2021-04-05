@@ -1,0 +1,40 @@
+#!/bin/python3
+import collections
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the isValid function below.
+def check(cnt):
+    
+    cnt+=collections.Counter()
+    ls = cnt.values()
+    if len(set(ls)) == 1:
+        return True
+   
+    return False
+
+def isValid(s):
+    cnt = collections.Counter(s)
+    if check(cnt):
+        return "YES"
+    for i in cnt.keys():
+        cnt[i] -= 1
+        if check(cnt):
+            return "YES"
+        cnt[i] += 1
+    return "NO"
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = isValid(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
